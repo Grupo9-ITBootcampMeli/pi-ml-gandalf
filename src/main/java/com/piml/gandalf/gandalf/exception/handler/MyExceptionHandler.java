@@ -1,5 +1,6 @@
 package com.piml.gandalf.gandalf.exception.handler;
 
+import com.piml.gandalf.gandalf.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,5 +18,9 @@ public class MyExceptionHandler {
     @ExceptionHandler(SignInNotAuthorizedException.class)
     protected  ResponseEntity<?> unauthorizedUser(){
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized access");
+    }
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    protected  ResponseEntity<?> userAlreadyExists(){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
     }
 }

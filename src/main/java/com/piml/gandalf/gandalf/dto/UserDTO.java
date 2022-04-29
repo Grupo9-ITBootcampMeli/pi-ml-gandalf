@@ -70,4 +70,17 @@ public class UserDTO {
                 .warehouseId(user.getWarehouseId())
                 .build();
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "name='" + name + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", warehouseId=" + warehouseId +
+                '}';
+    }
 }

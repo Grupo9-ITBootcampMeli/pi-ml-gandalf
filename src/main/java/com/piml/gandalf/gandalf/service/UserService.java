@@ -4,6 +4,7 @@ import com.piml.gandalf.gandalf.dto.SignInDTO;
 import com.piml.gandalf.gandalf.dto.SignInResponseDTO;
 import com.piml.gandalf.gandalf.entity.User;
 import com.piml.gandalf.gandalf.exception.handler.SignInNotAuthorizedException;
+import com.piml.gandalf.gandalf.exception.handler.UserAlreadyExistsException;
 import com.piml.gandalf.gandalf.repository.UserRepository;
 import com.piml.gandalf.gandalf.utils.ConvertPassword;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class UserService {
     public User create(User user) throws RuntimeException {
         Optional<User> checkUser = userRepository.findTopByCpfOrUsernameOrEmail(user.getCpf(), user.getUsername(), user.getEmail());
         if (checkUser.isPresent()) {
-            throw new RuntimeException("User already exists");
+            throw new UserAlreadyExistsException("User already exists");
         }
         try {
             user.setPassword(convertPassword.convertPass(user.getPassword()));
