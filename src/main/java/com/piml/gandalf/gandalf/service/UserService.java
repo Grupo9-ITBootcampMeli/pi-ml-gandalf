@@ -1,6 +1,5 @@
 package com.piml.gandalf.gandalf.service;
 
-import com.piml.gandalf.gandalf.dto.UserDTO;
 import com.piml.gandalf.gandalf.entity.User;
 import com.piml.gandalf.gandalf.repository.UserRepository;
 import org.springframework.stereotype.Service;

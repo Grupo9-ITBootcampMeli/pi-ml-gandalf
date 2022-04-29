@@ -1,5 +1,4 @@
 package com.piml.gandalf.gandalf.repository;
-import com.piml.gandalf.gandalf.dto.UserDTO;
 import com.piml.gandalf.gandalf.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
