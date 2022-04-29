@@ -1,5 +1,7 @@
 package com.piml.gandalf.gandalf.controller;
 
+import com.piml.gandalf.gandalf.dto.SignInDTO;
+import com.piml.gandalf.gandalf.dto.SignInResponseDTO;
 import com.piml.gandalf.gandalf.dto.UserDTO;
 import com.piml.gandalf.gandalf.entity.User;
 import com.piml.gandalf.gandalf.service.UserService;
@@ -9,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping
@@ -28,5 +32,9 @@ public class UserController {
         User user = userService.getById(id);
         UserDTO convertedProduct = UserDTO.map(user);
         return ResponseEntity.ok(convertedProduct);
+    }
+    @PostMapping("/user/v1/signin")
+    public SignInResponseDTO signIn(@Valid @RequestBody SignInDTO dto) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return userService.signIn(dto);
     }
 }

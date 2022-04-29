@@ -12,6 +12,10 @@ import javax.persistence.EntityNotFoundException;
 public class MyExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity<?> handleUserException() {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    }
+    @ExceptionHandler(SignInNotAuthorizedException.class)
+    protected  ResponseEntity<?> unauthorizedUser(){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized access");
     }
 }
