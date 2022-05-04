@@ -20,6 +20,9 @@ public class UserDTO {
     @NotEmpty
     private String name;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
+
     @NotNull
     @NotEmpty
     @Size(max = 14, min = 11)
@@ -62,6 +65,7 @@ public class UserDTO {
         return UserDTO.builder()
                 .name(user.getName())
                 .cpf(user.getCpf())
+                .id(user.getId())
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .username(user.getUsername())
@@ -75,6 +79,7 @@ public class UserDTO {
     public String toString() {
         return "UserDTO{" +
                 "name='" + name + '\'' +
+                ", id=" + id +
                 ", cpf='" + cpf + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
